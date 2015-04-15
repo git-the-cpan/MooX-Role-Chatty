@@ -1,0 +1,43 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.73.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 8afc0942466c8e1d9130ae4dbe1700cb61c62c5b Build.PL
+SHA1 1de0f6e58b07d6bd156138d5908513d9ca39ccff Changes
+SHA1 771876d52c8a437556c4a59bf7feedc784970abe INSTALL
+SHA1 432216f64e57eb6e2feb7df686c7871374a99ccd MANIFEST
+SHA1 af2fb16d953cf3117d9a64c6eaeeacfeecc06534 META.json
+SHA1 412800d66d56ddcae72fb81edc2e149a262c060e Makefile.PL
+SHA1 ee85aab001504431ae472aec877485434b440a00 README
+SHA1 4d8967971b9eee4c53494a548ccbadc2b271b50d lib/MooX/Role/Chatty.pm
+SHA1 ae63b22fca62d23ca4c5f94cc73b3c5036924830 t/00-report-prereqs.dd
+SHA1 7167a6ec318c24b45b6d0a70078155d788b52f0b t/00-report-prereqs.t
+SHA1 bbe9cc80a2d98634d42c58e34d2a82d192f1c0a9 t/00basic.t
+SHA1 054d89ba1870eb2ed0c516493b398f7c009a0c15 t/logger.t
+SHA1 ca37d7b91c2299a98877a6f36d3fab51e8dd906f t/release-pod-coverage.t
+SHA1 e7fc4d8f3f29ee522cb53914648393524fc7a6d4 t/release-pod-syntax.t
+SHA1 e6e6113ad97001fc89bd134e058081d4dd9cbc24 t/remark.t
+SHA1 3705100097b2f6cb068c1dd0185a005b6100124d t/verbosity.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJVLugQAAoJEFXmkwhreRSJiTsH/1H86Va9miXuoPPw7OBGVrGQ
+02XUhw5DlmZ+KKuknXd9hTARZqzHir3NepAmNog9W5qAi6tvhRlVn77Fulxuzf2l
+NWJaOSP09zKEf2JaIvEOrF854Yrsh4DzZEQ6pn8OU3E89+4dFOSmamm+CwjUJhld
+2OYZ2sDki/Sqg6TzP9lNAZY/cQuMuoXJ2EU9SLEgLkdeFQtgSqfKdr8YG/Z7lGul
+3rF/fVpLZaAqoqDTF6U0H6P0soI+jykj3amQ1Sj494X52Dsj6ztSTU0memhMstOX
+pFHHVubBvP/z4Hcm3Qb7pXX3Ag8zZZtjBt9P5h5VY6M5EFRIxdcjvTxE/AE1yzs=
+=Xlua
+-----END PGP SIGNATURE-----
