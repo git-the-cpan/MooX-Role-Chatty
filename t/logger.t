@@ -23,16 +23,21 @@ $c->logger->info('Logged');
 is( $Message, 'Logged', 'Log info via assigned logger' );
 ok( !defined $Warned, '. . . and not via default' );
 
-$c->clear_logger;
-undef $Warned;
-undef $Message;
-$c->logger->info('Logged');
-ok( !defined $Message, 'Logger cleared' );
-like(
-    $Warned,
-    qr/\d{4}-\w{3}-\d{2} \d{2}:\d{2}:\d{2} :: Logged/,
-    '. . . and default picks up'
-);
+SKIP: {
+    skip 'Log::Any::Adapter::Carp not installed', 2
+      unless eval { require Log::Any::Adapter::Carp };
+
+    $c->clear_logger;
+    undef $Warned;
+    undef $Message;
+    $c->logger->info('Logged');
+    ok( !defined $Message, 'Logger cleared' );
+    like(
+        $Warned,
+        qr/\d{4}-\w{3}-\d{2} \d{2}:\d{2}:\d{2} :: Logged/,
+        '. . . and default picks up'
+    );
+}
 
 $c->logger( My::Test::Logger->new );
 undef $Warned;

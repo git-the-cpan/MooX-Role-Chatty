@@ -19,7 +19,7 @@ my %module_build_args = (
     "Charles Bailey <cbail\@cpan.org>"
   ],
   "dist_name" => "MooX-Role-Chatty",
-  "dist_version" => "1.00",
+  "dist_version" => "1.01",
   "license" => "open_source",
   "module_name" => "MooX::Role::Chatty",
   "recommends" => {

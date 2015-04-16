@@ -32,6 +32,8 @@ is( $natter->verbose, 2, 'Verbosity changed' );
 
 isa_ok( $natter->logger,     'My::Test::Logger', 'Get logger (logger)' );
 isa_ok( $natter->get_logger, 'My::Test::Logger', 'Get logger (get_logger)' );
+
+# clear_logger tested in logger.t
 ok( $natter->logger($l2), 'Set logger' );
 is( $natter->logger, $l2, 'Logger changed' );
 ok( !eval { $natter->logger( My::Test::Logger::Not->new ) },

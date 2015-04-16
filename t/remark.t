@@ -19,27 +19,41 @@ $SIG{__WARN__} = sub { $Warned = shift; };
 
 my $c = My::Test->new( verbose => 1 );
 
-$c->remark('Logged');
-like( $Warned, qr/\d{4}-.+:: Logged/, 'Default logger repeats remark' );
+SKIP: {
+    skip 'Log::Any::Adapter::Carp not installed', 5
+      unless eval { require Log::Any::Adapter::Carp };
 
-undef $Warned;
-$c->verbose(0);
-$c->remark('Not Logged');
-ok( !defined $Warned, "Remark respects verbosity of 0" );
+    $c->remark('Logged');
+    like( $Warned, qr/\d{4}-.+:: Logged/, 'Default logger repeats remark' );
 
-$c->verbose(1);
+    undef $Warned;
+    $c->verbose(0);
+    $c->remark('Not Logged');
+    ok( !defined $Warned, "Remark respects verbosity of 0" );
 
-undef $Warned;
-$c->remark( { level => 1, message => 'Logged' } );
-like(
-    $Warned,
-    qr/\d{4}-.+:: Logged/,
-    'Remark logs at explicit level when appropriate'
-);
+    $c->verbose(1);
 
-undef $Warned;
-$c->remark( { level => 2, message => 'Not Logged' } );
-ok( !defined $Warned, ". . . and doesn't when it's not" );
+    undef $Warned;
+    $c->remark( { level => 1, message => 'Logged' } );
+    like(
+        $Warned,
+        qr/\d{4}-.+:: Logged/,
+        'Remark logs at explicit level when appropriate'
+    );
+
+    undef $Warned;
+    $c->remark( { level => 2, message => 'Not Logged' } );
+    ok( !defined $Warned, ". . . and doesn't when it's not" );
+
+    undef $Warned;
+    $c->remark( [ 'Logged %d %s', 1, 'thing' ] );
+    like(
+        $Warned,
+        qr/\d{4}-.+:: Logged 1 thing/,
+        "Arrayref of arguments handled"
+    );
+
+}
 
 $c->verbose(0);
 
@@ -52,10 +66,6 @@ $c->remark( { level => -5, message => 'Not logged' } );
 ok( !defined $Warned, ". . . even at high priority levels" );
 
 $c->verbose(1);
-
-undef $Warned;
-$c->remark( [ 'Logged %d %s', 1, 'thing' ] );
-like( $Warned, qr/\d{4}-.+:: Logged 1 thing/, "Arrayref of arguments handled" );
 
 undef $Message_via_l4plike;
 $c->logger( My::Test::Logger::Like_Log4perl->new );
